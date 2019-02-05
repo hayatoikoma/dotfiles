@@ -3,7 +3,6 @@ sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo apt update
 sudo apt upgrade -y
 sudo apt install build-essential bzip2 tmux htop default-jdk zsh nvidia-410 -y
-chsh -s $(which zsh)
 
 # Install zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
