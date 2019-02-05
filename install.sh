@@ -7,12 +7,6 @@ sudo apt install build-essential bzip2 tmux htop default-jdk zsh nvidia-410 -y
 # Install zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
-# Install nerd fonts
-git clone https://github.com/ryanoasis/nerd-fonts.git
-cd nerd-fonts
-./install.sh
-cd ~
-
 # Install tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
