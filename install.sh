@@ -22,10 +22,12 @@ export PATH="$HOME/miniconda3/bin:$PATH"
 conda update -n base -c defaults conda -y
 conda config --add channels conda-forge
 conda config --add channels pytorch
-conda create --name sci python=3.6.8 pip pytorch-nightly cudatoolkit=10.0 numpy scipy ipython scikit-image pandas py4j tqdm tensorflow protobuf matplotlib -y
+conda create --name sci python=3.6.8 pip pytorch-nightly cudatoolkit=10.0 numpy scipy ipython scikit-image pandas py4j=0.10.8.1 tqdm tensorflow protobuf matplotlib -y
 conda activate sci
 pip install torchvision
 pip install git+https://github.com/lanpa/tensorboardX.git@master
 pip install git+https://github.com/AOtools/aotools.git
+
+sudo chsh -s $(which zsh) "$USER"
 
 sudo reboot now
