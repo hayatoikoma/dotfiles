@@ -1,8 +1,13 @@
+# Install gcsfuse
+export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
+echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
 # Install cuda-related packages
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo apt update
 sudo apt upgrade -y
-sudo apt install build-essential bzip2 tmux htop default-jdk zsh nvidia-410 -y
+sudo apt install build-essential bzip2 tmux htop default-jdk zsh nvidia-410 gcsfuse -y
 
 # Install zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -26,7 +31,7 @@ conda create --name sci python=3.6.8 pip pyyaml pytorch-nightly cudatoolkit=10.0
 conda activate sci
 pip install torchvision
 pip install tensorboardX==1.5
-pip install aotools 
+pip install aotools
 pip install git+https://github.com/hayatoikoma/trackpy.git@master
 
 sudo chsh -s $(which zsh) "$USER"
