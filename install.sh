@@ -18,7 +18,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Install miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3.sh
 cd ~
-rm miniconda3.sh
 
 bash ~/miniconda3.sh -b -p $HOME/miniconda3
 echo ". $HOME/miniconda3/etc/profile.d/conda.sh" >> ~/.zshrc
@@ -41,4 +40,5 @@ sudo chsh -s $(which zsh) "$USER"
 ipython profile create
 cp ipython_config.py ~/.ipython/profile_default
 
+rm ~/miniconda3.sh
 sudo reboot now
