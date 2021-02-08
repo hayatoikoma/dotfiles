@@ -1,5 +1,5 @@
-source ~/.zplug/init.zsh
-#source ~/.zshrc_secret
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -63,8 +63,8 @@ zplug "modules/history-substring-search", from:prezto
 # Starts a tmux session automatically when Zsh is launched.
 # tmuxa -> attach a tmux session, tmuxl -> tmux ls
 zstyle ':prezto:*:*' color 'yes'
-#zstyle ':prezto:module:tmux:auto-start' local 'yes'
-#zstyle ':prezto:module:tmux:session' name 'prezto'
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:session' name 'prezto'
 zstyle ':prezto:module:git:log:context' format 'brief'
 zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:prompt' theme 'powerlevel9k'
@@ -76,7 +76,6 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
   'brackets' \
   'pattern' \
   'line' \
-  'cursor' \
   'root'
 
 # Install plugins if there are plugins that have not been installed
@@ -87,14 +86,17 @@ if ! zplug check --verbose; then
     fi
 fi
 
+# brew completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 export EDITOR=vim
 export VISUAL=vim
 export TERM="xterm-256color"
-export CUDA_DEVICE_ORDER=PCI_BUS_ID
-
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH}; export PATH
-
-alias sci='conda activate sci'
 
 # source plugins and add commands to $PATH
-zplug load #--verbose
+zplug load # --verbose
